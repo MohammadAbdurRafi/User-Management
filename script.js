@@ -70,27 +70,34 @@ function loadUserDetails() {
 
   if (user) {
     const userDetailsContainer = document.getElementById('user-details');
+    userDetailsContainer.className = 'list-group col-6';
+    const userImageContainer = document.getElementById('user-img');
 
     const nameElement = document.createElement('h2');
+    nameElement.className = 'list-group-item list-group-item-dark';
     nameElement.innerText = `${user.name.title} ${user.name.first} ${user.name.last}`;
 
     const emailElement = document.createElement('p');
+    emailElement.className = 'list-group-item list-group-item-dark';
     emailElement.innerHTML = `<strong>Email:</strong> ${user.email}`;
 
     const ageElement = document.createElement('p');
+    ageElement.className = 'list-group-item list-group-item-dark';
     ageElement.innerHTML = `<strong>Age:</strong> ${user.dob.age}`;
 
     const phoneElement = document.createElement('p');
+    phoneElement.className = 'list-group-item list-group-item-dark';
     phoneElement.innerHTML = `<strong>Phone:</strong> ${user.phone}`;
 
     const nationalityElement = document.createElement('p');
+    nationalityElement.className = 'list-group-item list-group-item-dark';
     nationalityElement.innerHTML = `<strong>Nationality:</strong> ${user.nat}`;
 
     const imgElement = document.createElement('img');
-    imgElement.className = 'user-image';
+    imgElement.className = 'user-image col-6';
     imgElement.src = user.picture.large;
 
-    userDetailsContainer.appendChild(imgElement);
+    userImageContainer.appendChild(imgElement);
     userDetailsContainer.appendChild(nameElement);
     userDetailsContainer.appendChild(emailElement);
     userDetailsContainer.appendChild(ageElement);
