@@ -70,39 +70,42 @@ function loadUserDetails() {
 
   if (user) {
     const userDetailsContainer = document.getElementById('user-details');
-    userDetailsContainer.className = 'list-group col-6';
-    const userImageContainer = document.getElementById('user-img');
+    userDetailsContainer.innerHTML = '';
+
+    const userInfoElement = document.createElement('div');
+    userInfoElement.classList.add('user-info');
 
     const nameElement = document.createElement('h2');
-    nameElement.className = 'list-group-item list-group-item-dark';
     nameElement.innerText = `${user.name.title} ${user.name.first} ${user.name.last}`;
-
-    const emailElement = document.createElement('p');
-    emailElement.className = 'list-group-item list-group-item-dark';
-    emailElement.innerHTML = `<strong>Email:</strong> ${user.email}`;
-
-    const ageElement = document.createElement('p');
-    ageElement.className = 'list-group-item list-group-item-dark';
-    ageElement.innerHTML = `<strong>Age:</strong> ${user.dob.age}`;
-
-    const phoneElement = document.createElement('p');
-    phoneElement.className = 'list-group-item list-group-item-dark';
-    phoneElement.innerHTML = `<strong>Phone:</strong> ${user.phone}`;
-
-    const nationalityElement = document.createElement('p');
-    nationalityElement.className = 'list-group-item list-group-item-dark';
-    nationalityElement.innerHTML = `<strong>Nationality:</strong> ${user.nat}`;
+    userInfoElement.appendChild(nameElement);
 
     const imgElement = document.createElement('img');
-    imgElement.className = 'user-image col-6';
+    imgElement.className = 'user-image';
     imgElement.src = user.picture.large;
+    userDetailsContainer.appendChild(imgElement);
 
-    userImageContainer.appendChild(imgElement);
-    userDetailsContainer.appendChild(nameElement);
-    userDetailsContainer.appendChild(emailElement);
-    userDetailsContainer.appendChild(ageElement);
-    userDetailsContainer.appendChild(phoneElement);
-    userDetailsContainer.appendChild(nationalityElement);
+    userDetailsContainer.appendChild(userInfoElement);
+
+    const emailElement = document.createElement('p');
+    emailElement.innerHTML = `<strong>Email:</strong> ${user.email}`;
+    userInfoElement.appendChild(emailElement);
+
+    const dobElement = document.createElement('p');
+    dobElement.innerHTML = `<strong>Date of Birth:</strong> ${new Date(user.dob.date).toLocaleDateString()}`;
+    userInfoElement.appendChild(dobElement);
+
+    const addressElement = document.createElement('p');
+    const { street, city, state, postcode } = user.location;
+    addressElement.innerHTML = `<strong>Address:</strong> ${street.number} ${street.name}, ${city}, ${state}, ${postcode}`;
+    userInfoElement.appendChild(addressElement);
+
+    const phoneElement = document.createElement('p');
+    phoneElement.innerHTML = `<strong>Phone:</strong> ${user.phone}`;
+    userInfoElement.appendChild(phoneElement);
+
+    const nationalityElement = document.createElement('p');
+    nationalityElement.innerHTML = `<strong>Nationality:</strong> ${user.nat}`;
+    userInfoElement.appendChild(nationalityElement);
   }
 }
 

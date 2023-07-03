@@ -10,6 +10,22 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
+    <style>
+      .user-details {
+        display: flex;
+      }
+
+      .user-details .user-image {
+        width: 50%;
+        max-height: 300px;
+        object-fit: cover;
+        margin-right: 20px;
+      }
+
+      .user-details .user-info {
+        width: 50%;
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
@@ -19,8 +35,7 @@
     </nav>
 
     <div class="container mt-4">
-      <div id="user-img"></div>
-      <div id="user-details" class=""></div>
+      <div id="user-details" class="user-details"></div>
     </div>
 
     <script src="script.js"></script>
