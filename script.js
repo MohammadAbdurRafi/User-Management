@@ -14,7 +14,7 @@ function fetchUser() {
         const name = `${user.name.title} ${user.name.first} ${user.name.last}`;
         const email = user.email;
         const image = user.picture.large;
-
+        // Creating user elements
         const cardElement = document.createElement('div');
         const columnElement = document.createElement('div');
         const imgElement = document.createElement('img');
