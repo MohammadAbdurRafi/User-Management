@@ -106,8 +106,42 @@ function loadUserDetails() {
     const nationalityElement = document.createElement('p');
     nationalityElement.innerHTML = `<strong>Nationality:</strong> ${user.nat}`;
     userInfoElement.appendChild(nationalityElement);
+
+    const registeredElement = document.createElement('p');
+    if (user.registered.age > 1) {
+      registeredElement.innerHTML = `<strong>Registered: </strong> ${user.registered.age} years ago`
+    } else {
+      registeredElement.innerHTML = `<strong>Registered: </strong> 1 year ago`
+    }
+    
+    userInfoElement.appendChild(registeredElement)
   }
 }
+
+// Theoretically can be made with users whose been on the platform for less than a year
+// This function didn't actually work, but should be looked into for all use cases
+// function calculateRegistered () {
+//   const urlParams = new URLSearchParams(window.location.search);
+//   const userId = urlParams.get('userId');
+
+//   const users = JSON.parse(localStorage.getItem('users'));
+
+//   const user = users.find((u) => u.login.uuid === userId);
+
+//   if (user) {
+//     const currentDate = new Date()
+//     if (user.registered.date.getYear() < currentDate.getYear()) {
+//       const yearsRegistered = currentDate.getYear() - user.registered.date.getYear()
+//       return `<strong>Registered:</strong> ${yearsRegistered} years ago`
+//     } else if (user.registered.date.getMonth() < currentDate.getMonth()) {
+//       const monthsRegistered = currentDate.getMonth() - user.registered.date.getMonth()
+//       return `<strong>Registered:</strong> ${monthsRegistered} months ago`
+//     } else {
+//       const daysRegistered = currentDate.getDay() - user.registered.date.getDay()
+//       return `<strong>Registered:</strong> ${daysRegistered} days ago`
+//     }
+//   }
+// }
 
 if (window.location.pathname === '/details.html') {
   loadUserDetails();
